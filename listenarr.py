@@ -70,7 +70,7 @@ username = os.getenv("USERNAME")
 range = 'week'                          # 'this_week', 'this_month', 'this_year', 'week', 'month', 'quarter', 'year', 'half_yearly', 'all_time'
 count = 50                              # number of artists to return
 min_listen = 5                          # set the minimum listen for artists within the range
-add_excluded_artists = True             # set to True if you want to add artists even if they are on the Import List Exclusions
+add_excluded_artists = False             # set to True if you want to add artists even if they are on the Import List Exclusions
 
 
 excluded_artists = []
