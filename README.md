@@ -34,7 +34,7 @@ min_listen = 5                    # Minimum number of listens for artists within
 add_excluded_artists = True       # Set to True to add artists even if they are on the Import List Exclusions
 ```
 
-On line ~37
+On line ~37:
 
 ```python
 searchForMissingAlbums: False     # set as True if you want to search for the missing albums on add
