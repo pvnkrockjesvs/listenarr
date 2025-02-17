@@ -38,6 +38,7 @@ def add_artist_to_lidarr(lidarr_url, api_key, mbid, artist_name, root_folder, ex
         },
     }
 
+
     response = requests.post(f'{lidarr_url}/api/v1/artist', headers=headers, json=payload)
 
     if response.status_code == 201:
@@ -54,7 +55,7 @@ def get_top_artists(username, range, count, min_listen):
     }
 
     response = requests.get(url, params=params)
-    response.raise_for_status()  # Raise an exception for HTTP errors
+    response.raise_for_status()
 
     data = response.json()
     artists = data['payload']['artists']
@@ -66,18 +67,18 @@ lidarr_url = os.getenv("URL")
 api_key = os.getenv("API")
 root_folder = os.getenv("ROOT_FOLDER")
 username = os.getenv("USERNAME")
-range = 'week'
-count = 150
-min_listen = 5
+range = 'week'                          # 'this_week', 'this_month', 'this_year', 'week', 'month', 'quarter', 'year', 'half_yearly', 'all_time'
+count = 50                              # number of artists to return
+min_listen = 5                          # set the minimum listen for artists within the range
+add_excluded_artists = True             # set to True if you want to add artists even if they are on the Import List Exclusions
 
 
+excluded_artists = []
+if not add_excluded_artists:
+    excluded_artists = get_excluded_artists(lidarr_url, api_key)
 
-# Get excluded artists
-excluded_artists = get_excluded_artists(lidarr_url, api_key)
-
-# Get top artists (assuming this function is defined elsewhere)
 artists = get_top_artists(username, range, count, min_listen)
 
-# Add artists
 for artist in artists:
     add_artist_to_lidarr(lidarr_url, api_key, artist['artist_mbid'], artist['artist_name'], root_folder, excluded_artists)
+
