@@ -34,7 +34,7 @@ def add_artist_to_lidarr(lidarr_url, api_key, mbid, artist_name, root_folder, ex
         'qualityProfileId': 1,
         'metadataProfileId': 1,
         "addOptions": {
-            "searchForMissingAlbums": False
+            "searchForMissingAlbums": False     # set as True if you want to search for the missing albums on add
         },
     }
 
@@ -43,9 +43,6 @@ def add_artist_to_lidarr(lidarr_url, api_key, mbid, artist_name, root_folder, ex
 
     if response.status_code == 201:
         print(f"Successfully added artist: {artist_name} (MBID: {mbid})")
-    # else:
-    #     print(f"Failed to add artist: {artist_name} (MBID: {mbid}). Status code: {response.status_code}")
-    #     print(f"Response content: {response.text}")
 
 def get_top_artists(username, range, count, min_listen):
     url = f"https://api.listenbrainz.org/1/stats/user/{username}/artists"
