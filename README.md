@@ -1,5 +1,3 @@
-Here's the corrected README with explanations of the changes:
-
 # listenarr
 
 A script to add your most played artists from ListenBrainz to your Lidarr.
