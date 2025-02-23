@@ -1,5 +1,4 @@
 import requests
-import json
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -70,9 +69,7 @@ min_listen = 5                          # set the minimum listen for artists wit
 add_excluded_artists = False             # set to True if you want to add artists even if they are on the Import List Exclusions
 
 
-excluded_artists = []
-if not add_excluded_artists:
-    excluded_artists = get_excluded_artists(lidarr_url, api_key)
+excluded_artists = get_excluded_artists(lidarr_url, api_key) if not add_excluded_artists else []
 
 artists = get_top_artists(username, range, count, min_listen)
 
