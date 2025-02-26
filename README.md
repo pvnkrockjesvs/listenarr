@@ -42,14 +42,8 @@ searchForMissingAlbums: False     # set as True if you want to search for the mi
 
 ## Usage
 
-You can run the script using either the bash script or Python directly:
 
-Using the bash script:
-```bash
-/path/to/project/listenarr.sh
-```
-
-Using Python directly:
+Using Python:
 ```bash
 python3 listenarr.py
 ```
